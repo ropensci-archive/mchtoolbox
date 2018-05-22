@@ -3,7 +3,7 @@
 mchtoolbox: Maternal Child Health Toolbox <img src="man/figures/imgHexSmall.png" align="right" />
 =================================================================================================
 
-[![Travis build status](https://travis-ci.com/ropenscilabs/mchtoolbox.svg?branch=master)](https://travis-ci.com/ropenscilabs/mchtoolbox)
+[![Travis build status](https://travis-ci.com/ropenscilabs/mchtoolbox.svg?branch=master)](https://travis-ci.com/ropenscilabs/mchtoolbox) [![codecov](https://codecov.io/gh/ropenscilabs/mchtoolbox/branch/master/graph/badge.svg)](https://codecov.io/gh/ropenscilabs/mchtoolbox)
 
 Use `mchtoolbox` to calculate percentiles and z-scores for a child’s sex and age for BMI, weight, height, and head circumference based on CDC growth charts.
 
@@ -41,7 +41,7 @@ create_cdc_growth(nhanes_data)
 
 Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-### Project origin
+### Project Origin
 
 This project was begun during the [2018 rOpenSci unconference](unconf18.ropensci.org): <https://github.com/ropensci/unconf18/issues/49>
 
