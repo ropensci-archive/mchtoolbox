@@ -74,6 +74,7 @@ shinyUI(
       br(),
 
       tableOutput("contents"),
+
       br()
     ),
 
