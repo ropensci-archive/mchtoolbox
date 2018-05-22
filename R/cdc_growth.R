@@ -113,25 +113,16 @@ compute_cdc_growth <- function(df)  {
     purrr::set_names(z_vars) %>%
     dplyr::bind_cols(df, .)
 
-  percentiles <- purrr::map(
-    .x = z_vars,
+  final_df <- purrr::map_dfc(
+    .x = set_names(z_vars, z_vars),
     .f = p_fun,
     df = data_zscores
-  )
+  ) %>%
+    dplyr::bind_cols(data_zscores, .)
 
-  data_zscores <- data_zscores %>%
-     mutate(wapct = percentiles[[1]], # Just for now. Fix later.
-            bmipct = percentiles[[2]])
-
-  return(data_zscores)
+  return(final_df)
 
 }
-
-
-
-
-
-
 
 
 # calculate percentile (doesn't work!)
