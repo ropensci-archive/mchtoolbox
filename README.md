@@ -17,11 +17,11 @@ This project was begun during the 2018 rOpenSci unconference: <https://github.co
 ### expected input:
 
 **units:**
-sex: 1=male, 2=female
-agemos: months
-height: cm
-weight: kg
-headcir: cm (optional)
+* sex: 1=male, 2=female
+* agemos: months
+* height: cm
+* weight: kg
+* headcir: cm (optional)
 
 Installation
 ------------
