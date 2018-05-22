@@ -16,5 +16,6 @@ LazyData: true
 Depends: R (>= 3.0.3)
 Imports: 
     shiny,
-    magrittr
+    magrittr,
+    readr
 RoxygenNote: 6.0.1

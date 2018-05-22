@@ -11,4 +11,5 @@
 #'   \item{weight}{Weight in kg.}
 #'   \item{headcir}{Head circumference in cm.}
 #' }
+#' @import readr
 "nhanes_data"
