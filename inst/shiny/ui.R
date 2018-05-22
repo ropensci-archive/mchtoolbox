@@ -1,7 +1,7 @@
 library("shiny")
 library("shinythemes")
 library("ggplot2")
-
+library("mchtoolbox")
 
 shinyUI(
   navbarPage(
@@ -77,7 +77,7 @@ shinyUI(
         column(width = 4,
                # In a plotOutput, passing values for click, dblclick, hover, or brush
                # will enable those interactions.
-               plotOutput("plot1", height = 350,
+               plotOutput("plot1", height = 550,
                           # Equivalent to: click = clickOpts(id = "plot_click")
                           click = "plot_click",
                           dblclick = dblclickOpts(
@@ -93,19 +93,12 @@ shinyUI(
         )
       ),
       fluidRow(
-        column(width = 3,
-               verbatimTextOutput("click_info")
-        ),
-        column(width = 3,
-               verbatimTextOutput("dblclick_info")
-        ),
-        column(width = 3,
-               verbatimTextOutput("hover_info")
-        ),
-        column(width = 3,
-               verbatimTextOutput("brush_info")
+        column(width = 9,
+               verbatimTextOutput("click_info_new")
+               #textOutput("selected_var")
         )
       ),
+      #DTOutput('results_out')
       tableOutput("contents"),
 
       br()
