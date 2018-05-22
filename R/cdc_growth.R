@@ -108,9 +108,7 @@ compute_cdc_growth <- function(df)  {
     purrr::set_names(z_vars) %>%
     dplyr::bind_cols(df, .)
 
-  final_df <- dplyr::bind_cols(testing, data_zscores)
-
-  return(final_df)
+  return(data_zscores)
 
 }
 
