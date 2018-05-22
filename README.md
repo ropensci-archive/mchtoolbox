@@ -1,11 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-mchtoolbox: Maternal Child Health Toolbox <img src="man/figures/imgHexSmall.png" align="right" />
-==========
-[![Travis build
-status](https://travis-ci.com/ropenscilabs/mchtoolbox.svg?branch=master)](https://travis-ci.com/ropenscilabs/mchtoolbox)
+\# mchtoolbox: Maternal Child Health Toolbox <img src="man/figures/imgHexSmall.png" align="right" />
+====================================================================================================
 
-The mchtoolbox package is used to calculate percentiles and z-scores for a child’s sex and age for BMI, weight, height, and head circumference based on the CDC growth charts. 
+[![Travis build status](https://travis-ci.com/ropenscilabs/mchtoolbox.svg?branch=master)](https://travis-ci.com/ropenscilabs/mchtoolbox)
+
+The mchtoolbox package is used to calculate percentiles and z-scores for a child’s sex and age for BMI, weight, height, and head circumference based on the CDC growth charts.
 
 ### Project origin
 
@@ -18,26 +18,23 @@ This project was begun during the 2018 rOpenSci unconference: <https://github.co
 ### expected input:
 
 **units:**
-* sex: 1=male, 2=female
-* agemos: months
-* height: cm
-* weight: kg
-* headcir: cm (optional)
+
+-   sex: 1=male, 2=female
+-   agemos: months
+-   height: cm
+-   weight: kg
+-   headcir: cm (optional)
 
 Installation
 ------------
 
 You can install mchtoolbox from github with:
-```r
-install.packages("devtools") 
-devtools::install_github("ropenscilabs/mchtoolbox")
-```
+
+`r   # install.packages("devtools")   devtools::install_github("ropenscilabs/mchtoolbox")`
 
 Example
 -------
 
 This is a basic example which shows you how to solve a common problem:
 
-```r   
-## basic example code
-```
+`r   ## basic example code`
