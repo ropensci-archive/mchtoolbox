@@ -29,12 +29,16 @@ Installation
 ------------
 
 You can install mchtoolbox from github with:
-
-`r   # install.packages("devtools")   devtools::install_github("ropenscilabs/mchtoolbox")`
+```r
+install.packages("devtools") 
+devtools::install_github("ropenscilabs/mchtoolbox")
+```
 
 Example
 -------
 
 This is a basic example which shows you how to solve a common problem:
 
-`r   ## basic example code`
+```r   
+## basic example code
+```
