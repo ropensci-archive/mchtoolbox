@@ -4,7 +4,7 @@
 \alias{create_cdc_growth}
 \title{Title}
 \usage{
-create_cdc_growth(data)
+create_cdc_growth(df)
 }
 \arguments{
 \item{data}{Input data.frame.}
