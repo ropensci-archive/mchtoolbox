@@ -1,4 +1,17 @@
 
+#' Title
+#'
+#' @param data
+#'
+#' @return
+#' @export
+#'
+#' @examples
+create_cdc_growth <- function(data) {
+
+}
+
+
 # lg = length
 # ht = standing height
 # wt = weight
@@ -11,34 +24,6 @@
 # need to fix length (<24 months) and height (>24 months)
 # make headcir optional
 
-my_vars <- c(#"length", "stand_ht",
-              "weight",
-              #"headcir",
-              "bmi")
-l_vars <- c(#"llg", "lht",
-            "lwt",
-            #"lhc",
-            "lbmi")
-m_vars <- c(#"mlg", "mht",
-            "mwt",
-            #"mhc",
-            "mbmi")
-s_vars <- c(#"slg", "sht",
-            "swt",
-            #"shc",
-            "sbmi")
-z_vars <- c(#"lgz", "stz",
-            "waz",
-            #"headcz",
-            "bmiz")
-p_vars <- c(#"lgpct", "stpct",
-            "wapct",
-            #"headcpct",
-            "bmipct")
-f_vars <- c(#"flenz", "fstatz",
-            "fwaz",
-            #"fheadcz",
-            "fbmiz")
 
 
 
@@ -60,19 +45,78 @@ p_fun <- function(data = z_testing, z)  {
 
 }
 
-# calculate z score
-z_testing <- pmap_dfc(
-  .l = list(var = my_vars, l = l_vars, m = m_vars, s = s_vars),
-  .f = z_fun
-) %>%
-  set_names(z_vars) %>%
-  bind_cols(testing, .)
+compute_cdc_growth <- function(data)  {
+
+  # measured variables that are in a column
+  my_vars <- c(#"length", "stand_ht",
+    "weight",
+    #"headcir",
+    "bmi")
+
+  # lambda parameters
+  l_vars <- c(#"llg", "lht",
+    "lwt",
+    #"lhc",
+    "lbmi")
+
+  # mu parameters
+  m_vars <- c(#"mlg", "mht",
+    "mwt",
+    #"mhc",
+    "mbmi")
+
+  # sigma parameters
+  s_vars <- c(#"slg", "sht",
+    "swt",
+    #"shc",
+    "sbmi")
+
+  # zscore variables created with LMS method
+  z_vars <- c(#"lgz", "stz",
+    "waz",
+    #"headcz",
+    "bmiz")
+
+  # percentile variables created from z scores
+  p_vars <- c(#"lgpct", "stpct",
+    "wapct",
+    #"headcpct",
+    "bmipct")
+
+  # modified z score variables -- future development
+  f_vars <- c(#"flenz", "fstatz",
+    "fwaz",
+    #"fheadcz",
+    "fbmiz")
+
+  # calculate z score
+  data_zscores <- purrr::pmap_dfc(
+    .l = list(var = my_vars, l = l_vars, m = m_vars, s = s_vars),
+    .f = z_fun
+  ) %>%
+    purrr::set_names(z_vars) %>%
+    dplyr::bind_cols(testing, .)
+
+  data_zscores
+
+
+}
+
+
+
+
+
+
+
 
 # calculate percentile (doesn't work!)
-p_testing <- map_dfc(
-  .x = z_vars,
-  .f = p_fun
-)
+# p_testing <- purrr::map_dfc(
+#   .x = z_vars,
+#   .f = p_fun
+# ) %>%
+#   purrr::set_names(p_vars)
+
+
 
 
 
