@@ -1,4 +1,10 @@
+library("shiny")
+library("shinythemes")
+library("ggplot2")
+library("mchtoolbox")
+
 shinyServer(function(input, output, session) {
+
   output$contents <- renderTable({
     # input$file1 will be NULL initially. After the user selects
     # and uploads a file, head of that data file by default,
@@ -15,6 +21,7 @@ shinyServer(function(input, output, session) {
         sep = input$sep,
         quote = input$quote
       )
+      mchData = create_cdc_growth(df)
     },
     error = function(e) {
       # return a safeError if a parsing error occurs
@@ -30,13 +37,38 @@ shinyServer(function(input, output, session) {
 
   })
 
+
   output$plot1 <- renderPlot({
     if (input$plot_theme == "gray") {
-      ggplot(mtcars, aes(wt, mpg)) + geom_point() + theme_gray()
+      req(input$file1)
+      df <- read.csv(
+        input$file1$datapath,
+        header = input$header,
+        sep = input$sep,
+        quote = input$quote
+      )
+      mchData = create_cdc_growth(df)
+      ggplot(mchData, aes(height, weight)) + geom_point(aes(colour = factor(sex))) + theme_gray()
     } else if (input$plot_theme == "bw") {
-      ggplot(mtcars, aes(wt, mpg)) + geom_point() + theme_bw()
+      req(input$file1)
+      df <- read.csv(
+        input$file1$datapath,
+        header = input$header,
+        sep = input$sep,
+        quote = input$quote
+      )
+      mchData = create_cdc_growth(df)
+      ggplot(mchData, aes(height, weight)) + geom_point(aes(colour = factor(sex))) + theme_bw()
     } else if (input$plot_theme == "light") {
-      ggplot(mtcars, aes(wt, mpg)) + geom_point() + theme_light()
+      req(input$file1)
+      df <- read.csv(
+        input$file1$datapath,
+        header = input$header,
+        sep = input$sep,
+        quote = input$quote
+      )
+      mchData = create_cdc_growth(df)
+      ggplot(mchData, aes(height, weight)) + geom_point(aes(colour = factor(sex))) + theme_light()
     }
   })
 
@@ -44,17 +76,25 @@ shinyServer(function(input, output, session) {
     cat("input$plot_click:\n")
     str(input$plot_click)
   })
-  output$hover_info <- renderPrint({
-    cat("input$plot_hover:\n")
-    str(input$plot_hover)
+
+  output$click_info_new <- renderPrint({
+    req(input$file1)
+    df <- read.csv(
+      input$file1$datapath,
+      header = input$header,
+      sep = input$sep,
+      quote = input$quote
+    )
+    mchData = create_cdc_growth(df)
+    myvars <- c("cid", "height", "weight", "sex", "bmiz", "waz")
+    mchData1 <- mchData[myvars]
+    nearPoints(mchData1, input$plot_click, threshold = 10, maxpoints = 1,
+               addDist = TRUE)
   })
-  output$dblclick_info <- renderPrint({
-    cat("input$plot_dblclick:\n")
-    str(input$plot_dblclick)
-  })
-  output$brush_info <- renderPrint({
-    cat("input$plot_brush:\n")
-    str(input$plot_brush)
-  })
+
+  # output$selected_var <- renderText({
+  #   paste("Height", input$plot_click$x, "Weight", input$plot_click$y)
+  # })
+
 
 })
