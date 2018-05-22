@@ -84,7 +84,7 @@ shinyUI(
         "About mchtools",
         icon = icon("bar-chart-o", lib = "font-awesome"),
 
-        strong('About mchtools'),
+        h5('About mchtools'),
         img(src = 'https://raw.githubusercontent.com/ropenscilabs/mchtoolbox/master/man/figures/imgHexSmall.png', align = "right"),
         p(
           "The mchtoolbox package is used to calculate percentiles and z-scores for a child’s sex and age for BMI, weight, height, and head circumference based on the CDC growth charts."
@@ -97,7 +97,10 @@ shinyUI(
           )
         ),
         br(),
-
+        strong("References"),
+        p(
+          "Cole TJ, Bellizzi MC, Flegal KM, Dietz WH. Establishing a tandard definition for child overweight and obesity worldwide: international survey. BMJ: British Medical Journal. 2000;320(7244):1240."
+        ),
 
 
         br()
