@@ -77,7 +77,7 @@ shinyUI(
         column(width = 4,
                # In a plotOutput, passing values for click, dblclick, hover, or brush
                # will enable those interactions.
-               plotOutput("plot1", height = 550,
+               plotOutput("plot1", height = 550, width = 550,
                           # Equivalent to: click = clickOpts(id = "plot_click")
                           click = "plot_click",
                           dblclick = dblclickOpts(

@@ -14,7 +14,7 @@
 #' @examples
 create_cdc_growth <- function(df) {
   # prepare data
-  preped_data <- cdcgrowth_prep(df)
+  preped_data <- mchtoolbox:::cdcgrowth_prep(df)
 
   # output old data frame with new columns
   compute_cdc_growth(preped_data)
@@ -39,17 +39,22 @@ create_cdc_growth <- function(df) {
 
 # function to create z score
 z_fun <- function(df, var, l, m, s){
+  # z <- dplyr::if_else(
+  #   df[, l] != 0,
+  #   (((df[, var]/df[, m])**df[, l])-1)/(df[, s]*df[, l]),
+  #   log(df[, var] / df[, m]) / df[, s]
+  #   ) To do fix conditional.
 
   z <- (((df[, var]/df[, m])**df[, l])-1)/(df[, s]*df[, l])
 
-  return(z)
+  # return(z)
 }
 
 
 # function to create percentile from z score
-p_fun <- function(data = z_testing, z)  {
+p_fun <- function(df, z)  {
 
-  p <- pnorm(data[, z])*100
+  p <- pnorm(df[[z]])*100
 
   return(p)
 
@@ -107,6 +112,16 @@ compute_cdc_growth <- function(df)  {
   ) %>%
     purrr::set_names(z_vars) %>%
     dplyr::bind_cols(df, .)
+
+  percentiles <- purrr::map(
+    .x = z_vars,
+    .f = p_fun,
+    df = data_zscores
+  )
+
+  data_zscores <- data_zscores %>%
+     mutate(wapct = percentiles[[1]], # Just for now. Fix later.
+            bmipct = percentiles[[2]])
 
   return(data_zscores)
 

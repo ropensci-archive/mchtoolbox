@@ -2,6 +2,8 @@ library("shiny")
 library("shinythemes")
 library("ggplot2")
 library("mchtoolbox")
+library("dplyr")
+library("viridisLite")
 
 shinyServer(function(input, output, session) {
 
@@ -48,7 +50,20 @@ shinyServer(function(input, output, session) {
         quote = input$quote
       )
       mchData = create_cdc_growth(df)
-      ggplot(mchData, aes(height, weight)) + geom_point(aes(colour = factor(sex))) + theme_gray()
+      ggplot(mchData, aes(height, weight)) +
+        geom_point(aes(colour = factor(sex)), alpha = 0.7, size = 3) +
+        scale_colour_viridis_d(name = "Sex", labels = c("Male", "Female"), end = 0.75) +
+        labs(
+          x = "Height (cm)", y = "Weight (kg)"
+        ) +
+        theme_gray() +
+        theme(legend.position = c(0.9, 0.1),
+              legend.background = element_blank(),
+              legend.title = element_text(face = "bold", size = 16),
+              legend.text = element_text(face = "bold", size = 14),
+              axis.title.x = element_text(face = "bold", size = 16, vjust = 0),
+              axis.title.y = element_text(face = "bold", size = 16),
+              axis.text = element_text(size = 14))
     } else if (input$plot_theme == "bw") {
       req(input$file1)
       df <- read.csv(
@@ -58,7 +73,20 @@ shinyServer(function(input, output, session) {
         quote = input$quote
       )
       mchData = create_cdc_growth(df)
-      ggplot(mchData, aes(height, weight)) + geom_point(aes(colour = factor(sex))) + theme_bw()
+      ggplot(mchData, aes(height, weight)) +
+        geom_point(aes(colour = factor(sex)), alpha = 0.7, size = 3) +
+        scale_colour_viridis_d(name = "Sex", labels = c("Male", "Female"), end = 0.75) +
+        labs(
+          x = "Height (cm)", y = "Weight (kg)"
+        ) +
+        theme_bw() +
+        theme(legend.position = c(0.9, 0.1),
+              legend.background = element_blank(),
+              legend.title = element_text(face = "bold", size = 16),
+              legend.text = element_text(face = "bold", size = 14),
+              axis.title.x = element_text(face = "bold", size = 16, vjust = 0),
+              axis.title.y = element_text(face = "bold", size = 16),
+              axis.text = element_text(size = 14))
     } else if (input$plot_theme == "light") {
       req(input$file1)
       df <- read.csv(
@@ -68,7 +96,20 @@ shinyServer(function(input, output, session) {
         quote = input$quote
       )
       mchData = create_cdc_growth(df)
-      ggplot(mchData, aes(height, weight)) + geom_point(aes(colour = factor(sex))) + theme_light()
+      ggplot(mchData, aes(height, weight)) +
+        geom_point(aes(colour = factor(sex)), alpha = 0.7, size = 3) +
+        scale_colour_viridis_d(name = "Sex", labels = c("Male", "Female"), end = 0.75) +
+        labs(
+          x = "Height (cm)", y = "Weight (kg)"
+        ) +
+        theme_light() +
+        theme(legend.position = c(0.9, 0.1),
+              legend.background = element_blank(),
+              legend.title = element_text(face = "bold", size = 16),
+              legend.text = element_text(face = "bold", size = 14),
+              axis.title.x = element_text(face = "bold", size = 16, vjust = 0),
+              axis.title.y = element_text(face = "bold", size = 16),
+              axis.text = element_text(size = 14))
     }
   })
 
