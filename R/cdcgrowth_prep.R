@@ -1,46 +1,77 @@
-library(tidyverse)
+#' Prepare data for calculating CDC growth percentile
+#'
+#' Categorizes age, calculates BMI. Adds CDC reference data and calculates
+#' variables needed to calculate actual Z-score. Returns original data with new
+#' columns appended.
+#'
+#' Takes one argument, `data`, which must include (at minimum) expected columns
+#' `agemons`, `weight`, and `height`.
+#'
+#' @references Cole TJ, Bellizzi MC, Flegal KM, Dietz WH. Establishing a
+#' standard definition for child overweight and obesity worldwide: international
+#' survey. BMJ: British Medical Journal. 2000;320(7244):1240.
+#' @references https://www.cdc.gov/nccdphp/dnpao/growthcharts/resources/sas.htm
+#'
+#' @example
+#'
+#' ## NHANES data is included with package.
+#'
+#' cdcgrowth_prep(nhanes_data)
 
-df <- mchtoolbox::sim_data %>%
-  mutate(agecat = if_else(agemons >= 0 & agemons < 0.5,
-                          0,
-                          as.integer(agemons + 0.5) - 0.5),
-         bmi = weight/((height/100)**2)) %>%
-  left_join(mchtoolbox::cdc_ref, by = c("sex", "agecat")) %>%
-  mutate(ageint = agemos2 - agemos1,
-         dage = agemons - agemos1)
-
-# zscore function
-# Z = [((value / M)**L) – 1] / (S * L)
-# 1. agemos to agecat
-# if agemos >= 0 and agemos less than 0.5 then agecat = 0
-# else agecat = as.integer(agemos + 0.5) - 0.5
-# 2. calculate bmi
-# if bmi < 0 & ( weight>0 & height >0 & agemos >=24) then bmi=weight/(height/100)**2
-# 3. merge data by agecat variable
-# 4. new variables
-# l0
-l0_vars <- c(
-  "llg", "mlg", "slg", "lht", "mht", "sht", "lwt", "mwt", "swt", "lhc", "mhc",
-  "shc", "lbmi", "mbmi", "sbmi"
-)
-
-# l1
-l1_vars <- c("llg1", "mlg1", "slg1", "lht1", "mht1", "sht1", "lwt1", "mwt1",
-  "swt1", "lhc1", "mhc1", "shc1", "lbmi1", "mbmi1", "sbmi1")
-
-# l2
-l2_vars <- c("llg2", "mlg2", "slg2", "lht2", "mht2", "sht2", "lwt2", "mwt2",
-  "swt2", "lhc2", "mhc2", "shc2", "lbmi2", "mbmi2", "sbmi2")
-
-try_this <- function(l1, l2, data = df){
-  l0 <- data[, l1] + (data$dage * (data[, l2] - data[, l1])) / data$ageint
+#' Helper function
+calc_l0 <- function(l1, l2, df){
+  l0 <- df[, l1] + (df$dage * (df[, l2] - df[, l1])) / df$ageint
   return(l0)
 }
 
-testing <- map2_dfc(
-  .x = l1_vars,
-  .y = l2_vars,
-  .f = try_this
-) %>%
-  set_names(l0_vars) %>%
-  bind_cols(df, .)
+cdcgrowth_prep <- function(df){
+
+  ## -- Error checks -----------------------------------------------------------
+  ## Does `data` contain all necessary column names?
+  if(!all(c("agemos", "weight", "height", "sex") %in% names(df))){
+    stop(
+      "`data` must include columns `agemos`, `weight`, and `height`",
+      call. = FALSE
+    )
+  }
+
+  df <- df %>%
+    dplyr::mutate(
+      ## If agemons >= 0 and agemons < 0.5, then agecat = 0;
+      ## else agecat = as.integer(agemos + 0.5) - 0.5
+      agecat = dplyr::if_else(
+        agemos >= 0 & agemos < 0.5, 0,
+        as.integer(agemos + 0.5) - 0.5
+      ),
+      ## If BMI < 0 & (weight > 0 & height > 0 & agemos >=24),
+      ##  then BMI = weight / (height / 100) ** 2
+      bmi = weight / ((height / 100) ** 2)
+    ) %>%
+    dplyr::left_join(mchtoolbox::cdc_ref, by = c("sex", "agecat")) %>%
+    dplyr::mutate(
+      ageint = agemos2 - agemos1,
+      dage = agemos - agemos1
+    )
+
+  ## Z-Score Function, LMS method: Z = [((value / M)**L) – 1] / (S * L)
+
+  ## -- Lists of column names needed to calculate LMS variables ----------------
+  ## l0: will be column names of new dataset
+  l0_vars <- c(
+    "llg", "mlg", "slg", "lht", "mht", "sht", "lwt", "mwt", "swt", "lhc", "mhc",
+    "shc", "lbmi", "mbmi", "sbmi"
+  )
+
+  ## l1, l2: LMS columns in CDC reference data (included with package)
+  l1_vars <- paste0(l0_vars, 1)
+  l2_vars <- paste0(l0_vars, 2)
+
+  out_df <- purrr::map2_dfc(
+    .x = l1_vars, .y = l2_vars, .f = calc_l0, df = df
+  ) %>%
+    purrr::set_names(l0_vars) %>%
+    dplyr::bind_cols(df, .)
+
+  return(out_df)
+
+}
