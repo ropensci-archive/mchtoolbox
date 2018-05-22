@@ -57,7 +57,7 @@ create_cdc_growth(nhanes_data)
 
 ### Shiny App
 
-![shiny_screengrab](https://user-images.githubusercontent.com/7783352/40394166-2b00b14a-5dd7-11e8-9f62-88770d4e80db.png“)
+![shiny_screengrab](https://user-images.githubusercontent.com/7783352/40394166-2b00b14a-5dd7-11e8-9f62-88770d4e80db.png)
 
 
 ### Code of Conduct
