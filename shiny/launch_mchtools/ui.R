@@ -121,7 +121,7 @@ shinyUI(
           )
         ),
         p("Monica was the leader of this project"),
-        br(),
+        # br(),
         br(),
         HTML(
           '<div style="clear: left;"><img src="http://kylehamilton.com/files/jennifer-thompson.jpg" alt="" style="float: left; margin-right:5px" /></div>'
@@ -133,7 +133,20 @@ shinyUI(
             target = "_blank"
           )
         ),
-        p("Jennifer Thompson has authored things"),
+        #p("Jennifer Thompson has authored things"),
+        br(),
+        br(),
+        HTML(
+          '<div style="clear: left;"><img src="http://kylehamilton.com/files/maelle-salmon.jpg" alt="" style="float: left; margin-right:5px" /></div>'
+        ),
+        p(
+          a(
+            "Maëlle Salmon - rOpenSci",
+            href = "http://www.masalmon.eu/",
+            target = "_blank"
+          )
+        ),
+        #p("Jennifer Thompson has authored things"),
         br(),
         br(),
         HTML(
@@ -146,7 +159,7 @@ shinyUI(
             target = "_blank"
           )
         ),
-        p("Charles Gray has authored things"),
+        #p("Charles Gray has authored things"),
         br(),
         br(),
         HTML(
@@ -155,7 +168,7 @@ shinyUI(
         p(
           a("Jenny Draper - ESR NZ", href = "https://www.esr.cri.nz/", target = "_blank")
         ),
-        p("Jenny Draper has authored things"),
+        #p("Jenny Draper has authored things"),
         br(),
         br(),
         HTML(
@@ -168,7 +181,7 @@ shinyUI(
             target = "_blank"
           )
         ),
-        p("W. Kyle Hamilton has authored things"),
+        #p("W. Kyle Hamilton has authored things"),
         br(),
 
         br()
