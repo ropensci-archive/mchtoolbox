@@ -2,4 +2,5 @@
 
 export("%>%")
 export(launch_mchtoolbox)
+import(readr)
 importFrom(magrittr,"%>%")
