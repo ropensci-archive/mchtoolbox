@@ -85,7 +85,11 @@ shinyUI(
         icon = icon("bar-chart-o", lib = "font-awesome"),
 
         strong('About mchtools'),
-        p("WORDS"),
+        img(src = 'https://raw.githubusercontent.com/ropenscilabs/mchtoolbox/master/man/figures/imgHexSmall.png', align = "right"),
+        p(
+          "The mchtoolbox package is used to calculate percentiles and z-scores for a child’s sex and age for BMI, weight, height, and head circumference based on the CDC growth charts."
+        ),
+
         br(),
 
 
