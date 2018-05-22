@@ -1,5 +1,6 @@
 library("shiny")
 library("shinythemes")
+library("ggplot2")
 
 
 shinyUI(
@@ -72,13 +73,55 @@ shinyUI(
 
       ),
       br(),
-
+      fluidRow(
+        column(width = 4,
+               # In a plotOutput, passing values for click, dblclick, hover, or brush
+               # will enable those interactions.
+               plotOutput("plot1", height = 350,
+                          # Equivalent to: click = clickOpts(id = "plot_click")
+                          click = "plot_click",
+                          dblclick = dblclickOpts(
+                            id = "plot_dblclick"
+                          ),
+                          hover = hoverOpts(
+                            id = "plot_hover"
+                          ),
+                          brush = brushOpts(
+                            id = "plot_brush"
+                          )
+               )
+        )
+      ),
+      fluidRow(
+        column(width = 3,
+               verbatimTextOutput("click_info")
+        ),
+        column(width = 3,
+               verbatimTextOutput("dblclick_info")
+        ),
+        column(width = 3,
+               verbatimTextOutput("hover_info")
+        ),
+        column(width = 3,
+               verbatimTextOutput("brush_info")
+        )
+      ),
       tableOutput("contents"),
 
       br()
     ),
+    navbarMenu("Settings", icon = icon("cog", lib = "font-awesome"),
+               tabPanel("Graphics", icon = icon("tasks", lib = "font-awesome"),
+                        radioButtons("plot_theme", strong("Plot Theme"),
+                                     c("Gray" = "gray",
+                                       "Black and White" = "bw",
+                                       "Light" = "light"
+                                     ), selected = "gray"),
+                        br()
+               )),
 
     navbarMenu(
+
       "About mchtools",
       icon = icon("dot-circle-o", lib = "font-awesome"),
       tabPanel(
