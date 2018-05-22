@@ -2,9 +2,8 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 mchtoolbox: Maternal Child Health Toolbox <img src="man/figures/imgHexSmall.png" align="right" />
 ==========
-
-Overview
---------
+[![Travis build
+status](https://travis-ci.com/ropenscilabs/mchtoolbox.svg?branch=master)](https://travis-ci.com/ropenscilabs/mchtoolbox)
 
 ### Project origin
 
@@ -17,11 +16,11 @@ This project was begun during the 2018 rOpenSci unconference: <https://github.co
 ### expected input:
 
 **units:**
-sex: 1=male, 2=female
-agemos: months
-height: cm
-weight: kg
-headcir: cm (optional)
+* sex: 1=male, 2=female
+* agemos: months
+* height: cm
+* weight: kg
+* headcir: cm (optional)
 
 Installation
 ------------
