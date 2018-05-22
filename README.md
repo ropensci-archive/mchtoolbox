@@ -2,9 +2,8 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 mchtoolbox: Maternal Child Health Toolbox <img src="man/figures/imgHexSmall.png" align="right" />
 ==========
-
-Overview
---------
+[![Travis build
+status](https://travis-ci.com/ropenscilabs/mchtoolbox.svg?branch=master)](https://travis-ci.com/ropenscilabs/mchtoolbox)
 
 ### Project origin
 
