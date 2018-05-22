@@ -41,10 +41,9 @@ This is a basic example which shows you how to solve a common problem:
 create_cdc_growth(nhanes_data)
 ```
 
-
 ### Shiny App
 
-![shiny\_screengrab](https://user-images.githubusercontent.com/7783352/40394166-2b00b14a-5dd7-11e8-9f62-88770d4e80db.png“)
+![shiny\_screengrab](https://user-images.githubusercontent.com/7783352/40394166-2b00b14a-5dd7-11e8-9f62-88770d4e80db.png)
 
 ### Code of Conduct
 
