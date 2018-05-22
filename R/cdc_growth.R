@@ -7,7 +7,12 @@
 #' @export
 #'
 #' @examples
-create_cdc_growth <- function(data) {
+create_cdc_growth <- function(df) {
+  # prepare data
+  preped_data <- cdcgrowth_prep(df)
+
+  # output old data frame with new columns
+  compute_cdc_growth(df)
 
 }
 
@@ -28,9 +33,9 @@ create_cdc_growth <- function(data) {
 
 
 # function to create z score
-z_fun <- function(data = testing, var, l, m, s){
+z_fun <- function(df, var, l, m, s){
 
-  z <- (((data[, var]/data[, m])**data[, l])-1)/(data[, s]*data[, l])
+  z <- (((df[, var]/df[, m])**df[, l])-1)/(df[, s]*df[, l])
 
   return(z)
 }
@@ -45,7 +50,7 @@ p_fun <- function(data = z_testing, z)  {
 
 }
 
-compute_cdc_growth <- function(data)  {
+compute_cdc_growth <- function(df)  {
 
   # measured variables that are in a column
   my_vars <- c(#"length", "stand_ht",
@@ -92,10 +97,11 @@ compute_cdc_growth <- function(data)  {
   # calculate z score
   data_zscores <- purrr::pmap_dfc(
     .l = list(var = my_vars, l = l_vars, m = m_vars, s = s_vars),
-    .f = z_fun
+    .f = z_fun,
+    df = df
   ) %>%
     purrr::set_names(z_vars) %>%
-    dplyr::bind_cols(testing, .)
+    dplyr::bind_cols(df, .)
 
   data_zscores
 
