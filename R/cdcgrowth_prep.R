@@ -24,7 +24,7 @@ calc_l0 <- function(l1, l2, df){
   return(l0)
 }
 
-cdcgrowth_prep <- function(df){
+cdcgrowth_prep <- function(df, denom_type = "age"){
 
   ## -- Error checks -----------------------------------------------------------
   ## Does `data` contain all necessary column names?
@@ -47,7 +47,10 @@ cdcgrowth_prep <- function(df){
       ##  then BMI = weight / (height / 100) ** 2
       bmi = weight / ((height / 100) ** 2)
     ) %>%
-    dplyr::left_join(mchtoolbox::cdc_ref, by = c("sex", "agecat")) %>%
+    dplyr::left_join(
+      dplyr::filter(mchtoolbox::cdc_ref, denom == denom_type),
+      by = c("sex", "agecat")
+    ) %>%
     dplyr::mutate(
       ageint = agemos2 - agemos1,
       dage = agemos - agemos1
