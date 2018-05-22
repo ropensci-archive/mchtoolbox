@@ -17,7 +17,7 @@ create_cdc_growth <- function(df) {
   preped_data <- cdcgrowth_prep(df)
 
   # output old data frame with new columns
-  compute_cdc_growth(df)
+  compute_cdc_growth(preped_data)
 
 }
 
