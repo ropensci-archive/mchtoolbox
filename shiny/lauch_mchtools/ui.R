@@ -67,8 +67,29 @@ br()
            tabPanel("Authors and Contributors", icon = icon("users", lib = "font-awesome"),
 
 strong('Authors'),
+br(),
 
-HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2014/11/kyle80.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
+HTML('<div style="clear: left;"><img src="http://kylehamilton.com/files/monica-gerber.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
+p(a("Monica Gerber - Massachusetts General Hospital", href="https://www.massgeneral.org/children/research/researchlab.aspx?id=1577", target="_blank")),
+p("Monica was the leader of this project"),
+br(),
+
+HTML('<div style="clear: left;"><img src="http://kylehamilton.com/files/jennifer-thompson.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
+p(a("Jennifer Thompson - Vanderbilt University Medical Center", href="https://jenthompson.me/", target="_blank")),
+p("Jennifer Thompson has authored things"),
+br(),
+
+HTML('<div style="clear: left;"><img src="http://kylehamilton.com/files/charles-gray.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
+p(a("Charles Gray - La Trobe University", href="http://www.latrobe.edu.au/", target="_blank")),
+p("Charles Gray has authored things"),
+br(),
+
+HTML('<div style="clear: left;"><img src="http://kylehamilton.com/files/jenny-draper.png" alt="" style="float: left; margin-right:5px" /></div>'),
+p(a("Jenny Draper - ESR NZ", href="https://www.esr.cri.nz/", target="_blank")),
+p("Jenny Draper has authored things"),
+br(),
+
+HTML('<div style="clear: left;"><img src="http://kylehamilton.com/files/kyle-hamilton.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
 p(a("W. Kyle Hamilton - University of California, Merced", href="http://www.kylehamilton.com", target="_blank")),
 p("W. Kyle Hamilton has authored things"),
 br(),
