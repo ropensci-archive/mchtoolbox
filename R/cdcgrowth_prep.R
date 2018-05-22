@@ -1,30 +1,21 @@
-#' Prepare data for calculating CDC growth percentile
-#'
-#' Categorizes age, calculates BMI. Adds CDC reference data and calculates
-#' variables needed to calculate actual Z-score. Returns original data with new
-#' columns appended.
-#'
-#' Takes one argument, `data`, which must include (at minimum) expected columns
-#' `agemons`, `weight`, and `height`.
-#'
-#' @references Cole TJ, Bellizzi MC, Flegal KM, Dietz WH. Establishing a
-#' standard definition for child overweight and obesity worldwide: international
-#' survey. BMJ: British Medical Journal. 2000;320(7244):1240.
-#' @references https://www.cdc.gov/nccdphp/dnpao/growthcharts/resources/sas.htm
-#'
-#' @example
-#'
-#' ## NHANES data is included with package.
-#'
-#' cdcgrowth_prep(nhanes_data)
+# Prepare data for calculating CDC growth percentile
+#
+# Categorizes age, calculates BMI. Adds CDC reference data and calculates
+# variables needed to calculate actual Z-score. Returns original data with new
+# columns appended.
+#
+# Takes one argument, `data`, which must include (at minimum) expected columns
+# `agemons`, `weight`, and `height`.
+#
+#' @importFrom rlang .data
 
-#' Helper function
+## Helper function
 calc_l0 <- function(l1, l2, df){
   l0 <- df[, l1] + (df$dage * (df[, l2] - df[, l1])) / df$ageint
   return(l0)
 }
 
-cdcgrowth_prep <- function(df){
+cdcgrowth_prep <- function(df, denom_type = "age"){
 
   ## -- Error checks -----------------------------------------------------------
   ## Does `data` contain all necessary column names?
@@ -40,17 +31,20 @@ cdcgrowth_prep <- function(df){
       ## If agemons >= 0 and agemons < 0.5, then agecat = 0;
       ## else agecat = as.integer(agemos + 0.5) - 0.5
       agecat = dplyr::if_else(
-        agemos >= 0 & agemos < 0.5, 0,
-        as.integer(agemos + 0.5) - 0.5
+        .data$agemos >= 0 & .data$agemos < 0.5, 0,
+        as.integer(.data$agemos + 0.5) - 0.5
       ),
       ## If BMI < 0 & (weight > 0 & height > 0 & agemos >=24),
       ##  then BMI = weight / (height / 100) ** 2
-      bmi = weight / ((height / 100) ** 2)
+      bmi = .data$weight / ((.data$height / 100) ** 2)
     ) %>%
-    dplyr::left_join(mchtoolbox::cdc_ref, by = c("sex", "agecat")) %>%
+    dplyr::left_join(
+      dplyr::filter(mchtoolbox::cdc_ref, denom == denom_type),
+      by = c("sex", "agecat")
+    ) %>%
     dplyr::mutate(
-      ageint = agemos2 - agemos1,
-      dage = agemos - agemos1
+      ageint = .data$agemos2 - .data$agemos1,
+      dage = .data$agemos - .data$agemos1
     )
 
   ## Z-Score Function, LMS method: Z = [((value / M)**L) – 1] / (S * L)

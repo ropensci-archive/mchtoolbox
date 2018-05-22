@@ -74,6 +74,7 @@ shinyUI(
       br(),
 
       tableOutput("contents"),
+
       br()
     ),
 
@@ -84,10 +85,23 @@ shinyUI(
         "About mchtools",
         icon = icon("bar-chart-o", lib = "font-awesome"),
 
-        strong('About mchtools'),
-        p("WORDS"),
+        h5('About mchtools'),
+        img(src = 'https://raw.githubusercontent.com/ropenscilabs/mchtoolbox/master/man/figures/imgHexSmall.png', align = "right"),
+        p(
+          "The mchtoolbox package is used to calculate percentiles and z-scores for a child’s sex and age for BMI, weight, height, and head circumference based on the CDC growth charts."
+        ),
+        p(
+          a(
+            "Based on the SAS Program for the 2000 CDC Growth Charts from the CDC",
+            href = "https://www.cdc.gov/nccdphp/dnpao/growthcharts/resources/sas.htm",
+            target = "_blank"
+          )
+        ),
         br(),
-
+        strong("References"),
+        p(
+          "Cole TJ, Bellizzi MC, Flegal KM, Dietz WH. Establishing a tandard definition for child overweight and obesity worldwide: international survey. BMJ: British Medical Journal. 2000;320(7244):1240."
+        ),
 
 
         br()
@@ -111,7 +125,7 @@ shinyUI(
           )
         ),
         p("Monica was the leader of this project"),
-        br(),
+        # br(),
         br(),
         HTML(
           '<div style="clear: left;"><img src="http://kylehamilton.com/files/jennifer-thompson.jpg" alt="" style="float: left; margin-right:5px" /></div>'
@@ -123,7 +137,20 @@ shinyUI(
             target = "_blank"
           )
         ),
-        p("Jennifer Thompson has authored things"),
+        #p("Jennifer Thompson has authored things"),
+        br(),
+        br(),
+        HTML(
+          '<div style="clear: left;"><img src="http://kylehamilton.com/files/maelle-salmon.jpg" alt="" style="float: left; margin-right:5px" /></div>'
+        ),
+        p(
+          a(
+            "Maëlle Salmon - rOpenSci",
+            href = "http://www.masalmon.eu/",
+            target = "_blank"
+          )
+        ),
+        #p("Jennifer Thompson has authored things"),
         br(),
         br(),
         HTML(
@@ -136,7 +163,7 @@ shinyUI(
             target = "_blank"
           )
         ),
-        p("Charles Gray has authored things"),
+        #p("Charles Gray has authored things"),
         br(),
         br(),
         HTML(
@@ -145,7 +172,7 @@ shinyUI(
         p(
           a("Jenny Draper - ESR NZ", href = "https://www.esr.cri.nz/", target = "_blank")
         ),
-        p("Jenny Draper has authored things"),
+        #p("Jenny Draper has authored things"),
         br(),
         br(),
         HTML(
@@ -158,7 +185,7 @@ shinyUI(
             target = "_blank"
           )
         ),
-        p("W. Kyle Hamilton has authored things"),
+        #p("W. Kyle Hamilton has authored things"),
         br(),
 
         br()

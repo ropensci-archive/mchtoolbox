@@ -3,3 +3,6 @@
 ^README\.Rmd$
 ^README-.*\.png$
 ^LICENSE\.md$
+^data-raw$
+^\.travis\.yml$
+^CODE_OF_CONDUCT\.md$

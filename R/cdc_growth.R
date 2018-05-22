@@ -1,10 +1,15 @@
 
 #' Title
 #'
-#' @param data
+#' @param data Input data.frame.
 #'
 #' @return
 #' @export
+#'
+#' @references Cole TJ, Bellizzi MC, Flegal KM, Dietz WH. Establishing a
+#' standard definition for child overweight and obesity worldwide: international
+#' survey. BMJ: British Medical Journal. 2000;320(7244):1240.
+#' @references https://www.cdc.gov/nccdphp/dnpao/growthcharts/resources/sas.htm
 #'
 #' @examples
 create_cdc_growth <- function(df) {
@@ -103,8 +108,9 @@ compute_cdc_growth <- function(df)  {
     purrr::set_names(z_vars) %>%
     dplyr::bind_cols(df, .)
 
-  data_zscores
+  final_df <- dplyr::bind_cols(testing, data_zscores)
 
+  return(final_df)
 
 }
 
