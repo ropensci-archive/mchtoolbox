@@ -5,6 +5,8 @@ mchtoolbox: Maternal Child Health Toolbox <img src="man/figures/imgHexSmall.png"
 [![Travis build
 status](https://travis-ci.com/ropenscilabs/mchtoolbox.svg?branch=master)](https://travis-ci.com/ropenscilabs/mchtoolbox)
 
+The mchtoolbox package is used to calculate percentiles and z-scores for a child’s sex and age for BMI, weight, height, and head circumference based on the CDC growth charts. 
+
 ### Project origin
 
 This project was begun during the 2018 rOpenSci unconference: <https://github.com/ropensci/unconf18/issues/49>
