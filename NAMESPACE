@@ -2,4 +2,6 @@
 
 export("%>%")
 export(launch_mchtoolbox)
+import(readr)
+import(shiny)
 importFrom(magrittr,"%>%")
