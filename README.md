@@ -30,7 +30,7 @@ Installation
 
 You can install mchtoolbox from github with:
 
-`r   # install.packages("devtools")   devtools::install_github("softloud/mchtoolbox")`
+`r   # install.packages("devtools")   devtools::install_github("ropenscilabs/mchtoolbox")`
 
 Example
 -------
