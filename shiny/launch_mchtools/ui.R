@@ -89,7 +89,13 @@ shinyUI(
         p(
           "The mchtoolbox package is used to calculate percentiles and z-scores for a child’s sex and age for BMI, weight, height, and head circumference based on the CDC growth charts."
         ),
-
+        p(
+          a(
+            "Based on the SAS Program for the 2000 CDC Growth Charts from the CDC",
+            href = "https://www.cdc.gov/nccdphp/dnpao/growthcharts/resources/sas.htm",
+            target = "_blank"
+          )
+        ),
         br(),
 
 
