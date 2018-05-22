@@ -1,9 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-mchtoolbox
+mchtoolbox: Maternal Child Health Toolbox <img src="man/figures/imgHexSmall.png" align="right" />
 ==========
-
-Maternal Child Health Toolbox
 
 Overview
 --------
