@@ -49,6 +49,10 @@ create_cdc_growth(nhanes_data)
 
 ```
 
+## Shiny App
+
+![screenshot](https://user-images.githubusercontent.com/2274317/40392499-ae02ee8e-5dd0-11e8-9bca-ca0b7532593b.png)
+
 ### Code of Conduct
 
 Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
