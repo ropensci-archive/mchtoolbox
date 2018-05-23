@@ -14,10 +14,10 @@
 #' @examples
 create_cdc_growth <- function(df) {
   # prepare data
-  preped_data <- mchtoolbox:::cdcgrowth_prep(df)
+  prepped_data <- mchtoolbox:::cdcgrowth_prep(df)
 
   # output old data frame with new columns
-  compute_cdc_growth(preped_data)
+  compute_cdc_growth(prepped_data)
 
 }
 
@@ -40,10 +40,10 @@ create_cdc_growth <- function(df) {
 # function to create z score
 z_fun <- function(df, var, l, m, s){
   # z <- dplyr::if_else(
-  #   df[, l] != 0,
+  #   df[[l]] != 0,
   #   (((df[, var]/df[, m])**df[, l])-1)/(df[, s]*df[, l]),
   #   log(df[, var] / df[, m]) / df[, s]
-  #   ) To do fix conditional.
+  #   ) # To do fix conditional.
 
   z <- (((df[, var]/df[, m])**df[, l])-1)/(df[, s]*df[, l])
 
@@ -114,7 +114,7 @@ compute_cdc_growth <- function(df)  {
     dplyr::bind_cols(df, .)
 
   final_df <- purrr::map_dfc(
-    .x = set_names(z_vars, z_vars),
+    .x = set_names(z_vars, p_vars), # pass z to p_fun and name them with p_vars
     .f = p_fun,
     df = data_zscores
   ) %>%
@@ -123,14 +123,6 @@ compute_cdc_growth <- function(df)  {
   return(final_df)
 
 }
-
-
-# calculate percentile (doesn't work!)
-# p_testing <- purrr::map_dfc(
-#   .x = z_vars,
-#   .f = p_fun
-# ) %>%
-#   purrr::set_names(p_vars)
 
 
 
