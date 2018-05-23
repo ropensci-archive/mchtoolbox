@@ -1,9 +1,10 @@
-
-#' Title
+#' create_cdc_growth
 #'
-#' @param data Input data.frame.
+#' Calculate important maternal child health measures from a dataset
+#' @param df Input data.frame.
 #'
-#' @return
+#' @return the original data frame with percentiles, z-scores, and related values
+#' added as additional columns
 #' @export
 #'
 #' @references Cole TJ, Bellizzi MC, Flegal KM, Dietz WH. Establishing a
@@ -12,6 +13,8 @@
 #' @references https://www.cdc.gov/nccdphp/dnpao/growthcharts/resources/sas.htm
 #'
 #' @examples
+#' ## NHANES example data is included with package
+#' create_cdc_growth(nhanes_data)
 create_cdc_growth <- function(df) {
   # prepare data
   prepped_data <- mchtoolbox:::cdcgrowth_prep(df)
