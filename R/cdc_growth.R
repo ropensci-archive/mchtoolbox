@@ -114,7 +114,7 @@ compute_cdc_growth <- function(df)  {
     dplyr::bind_cols(df, .)
 
   final_df <- purrr::map_dfc(
-    .x = set_names(z_vars, p_vars), # pass z to p_fun and name them with p_vars
+    .x = purrr::set_names(z_vars, p_vars), # pass z to p_fun and name them with p_vars
     .f = p_fun,
     df = data_zscores
   ) %>%
