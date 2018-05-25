@@ -2,6 +2,8 @@ library("shiny")
 library("shinythemes")
 library("ggplot2")
 library("mchtoolbox")
+library("dplyr")
+library("viridisLite")
 
 shinyUI(
   navbarPage(
