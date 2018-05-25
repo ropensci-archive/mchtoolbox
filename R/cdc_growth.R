@@ -1,9 +1,10 @@
-
-#' Title
+#' create_cdc_growth
 #'
-#' @param data Input data.frame.
+#' Calculate important maternal child health measures from a dataset
+#' @param df Input data.frame.
 #'
-#' @return
+#' @return the original data frame with percentiles, z-scores, and related values
+#' added as additional columns
 #' @export
 #'
 #' @references Cole TJ, Bellizzi MC, Flegal KM, Dietz WH. Establishing a
@@ -12,12 +13,14 @@
 #' @references https://www.cdc.gov/nccdphp/dnpao/growthcharts/resources/sas.htm
 #'
 #' @examples
+#' ## NHANES example data is included with package
+#' create_cdc_growth(nhanes_data)
 create_cdc_growth <- function(df) {
   # prepare data
-  preped_data <- mchtoolbox:::cdcgrowth_prep(df)
+  prepped_data <- mchtoolbox:::cdcgrowth_prep(df)
 
   # output old data frame with new columns
-  compute_cdc_growth(preped_data)
+  compute_cdc_growth(prepped_data)
 
 }
 
@@ -40,10 +43,10 @@ create_cdc_growth <- function(df) {
 # function to create z score
 z_fun <- function(df, var, l, m, s){
   # z <- dplyr::if_else(
-  #   df[, l] != 0,
+  #   df[[l]] != 0,
   #   (((df[, var]/df[, m])**df[, l])-1)/(df[, s]*df[, l]),
   #   log(df[, var] / df[, m]) / df[, s]
-  #   ) To do fix conditional.
+  #   ) # To do fix conditional.
 
   z <- (((df[, var]/df[, m])**df[, l])-1)/(df[, s]*df[, l])
 
@@ -113,33 +116,16 @@ compute_cdc_growth <- function(df)  {
     purrr::set_names(z_vars) %>%
     dplyr::bind_cols(df, .)
 
-  percentiles <- purrr::map(
-    .x = z_vars,
+  final_df <- purrr::map_dfc(
+    .x = purrr::set_names(z_vars, p_vars), # pass z to p_fun and name them with p_vars
     .f = p_fun,
     df = data_zscores
-  )
+  ) %>%
+    dplyr::bind_cols(data_zscores, .)
 
-  data_zscores <- data_zscores %>%
-     mutate(wapct = percentiles[[1]], # Just for now. Fix later.
-            bmipct = percentiles[[2]])
-
-  return(data_zscores)
+  return(final_df)
 
 }
-
-
-
-
-
-
-
-
-# calculate percentile (doesn't work!)
-# p_testing <- purrr::map_dfc(
-#   .x = z_vars,
-#   .f = p_fun
-# ) %>%
-#   purrr::set_names(p_vars)
 
 
 

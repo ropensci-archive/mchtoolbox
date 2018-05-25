@@ -2,15 +2,23 @@
 % Please edit documentation in R/cdc_growth.R
 \name{create_cdc_growth}
 \alias{create_cdc_growth}
-\title{Title}
+\title{create_cdc_growth}
 \usage{
 create_cdc_growth(df)
 }
 \arguments{
-\item{data}{Input data.frame.}
+\item{df}{Input data.frame.}
+}
+\value{
+the original data frame with percentiles, z-scores, and related values
+added as additional columns
 }
 \description{
-Title
+Calculate important maternal child health measures from a dataset
+}
+\examples{
+## NHANES example data is included with package
+create_cdc_growth(nhanes_data)
 }
 \references{
 Cole TJ, Bellizzi MC, Flegal KM, Dietz WH. Establishing a
