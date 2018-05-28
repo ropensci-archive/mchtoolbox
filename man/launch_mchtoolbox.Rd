@@ -23,4 +23,7 @@ library(shiny)
 lauch_mchtoolbox()
 }
 }
+\author{
+W. Kyle Hamilton and Jennifer Thompson
+}
 \keyword{mchtoolbox}

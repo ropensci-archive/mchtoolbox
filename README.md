@@ -58,7 +58,7 @@ Contributors:
 -   [Monica W. Gerber](https://github.com/monicagerber)
 -   [Charles T. Gray](https://github.com/softloud)
 -   [Jennifer Thompson](https://jenthompson.me/)
--   [Kyle Hamilton](http://kylehamilton.com/)
+-   [W. Kyle Hamilton](http://kylehamilton.com/)
 -   [Jenny Draper](https://www.esr.cri.nz)
 
 A special thank you to:
