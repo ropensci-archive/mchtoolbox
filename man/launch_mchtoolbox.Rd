@@ -13,9 +13,9 @@ Nothing
 lauch_mchtoolbox loads an interactive user interface built using R shiny.
 }
 \details{
-Launch mchtoolbox
+Launch Shiny interface for mchtoolbox
 
-The purpose of building the interactive user interface is to provide an easy method for people to use instead of the command line.
+The purpose of building the interactive user interface is to provide an easy method for people instead of the command line.
 }
 \examples{
 \dontrun{
