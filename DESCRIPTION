@@ -16,6 +16,8 @@ LazyData: true
 Depends: R (>= 3.0.3)
 Imports: 
     shiny,
+    ggplot2,
+    viridisLite,
     magrittr,
     purrr,
     dplyr,
