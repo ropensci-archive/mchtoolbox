@@ -7,7 +7,7 @@
 #' \describe{
 #'   \item{cid}{Patient identifier.}
 #'   \item{sex}{Sex of study participant coded as 1 = male, 2 = female}
-#'   \item{agemons}{Age in months at screening of study participant.}
+#'   \item{agemos}{Age in months at screening of study participant.}
 #'   \item{height}{Recumbent length in cm.}
 #'   \item{weight}{Weight in kg.}
 #'   \item{headcir}{Head circumference in cm.}
