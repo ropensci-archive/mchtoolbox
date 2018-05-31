@@ -6,12 +6,72 @@
 \title{CDC reference}
 \format{A dataframe.
 \describe{
-  \item{}{Still need to document all variables - there are lots.}
+  \item{denom}{Patient identifier}
+  \item{sex}{Sex of study participant coded as 1 = male, 2 = female}
+  \item{agemos1}{Age in months at screening of study participant starting at 0 (birth) data in units of 6 months or 0.5 years}
+  \item{llg1}{Lambda parameter for receumbent length (in centimeters) by sex and agemos1}
+  \item{mlg1}{Mu parameter for receumbent length (in centimeters) by sex and agemos1}
+  \item{slg1}{Sigma parameter for receumbent length (in centimeters) by sex and agemos1}
+  \item{agemos2}{Age in months at screening of study participant starting at 0.5 (aged 6 months) data in units of 6 months or 0.5 years}
+  \item{llg2}{Lambda parameter for receumbent length (in centimeters) by sex and agemos2}
+  \item{mlg2}{Mu parameter for receumbent length (in centimeters) by sex and agemos2}
+  \item{slg2}{Sigma parameter for receumbent length (in centimeters) by sex and agemos2}
+  \item{agecat}{Age in months at screening of study participant starting at 0 (birth) data in units of 6 months or 0.5 years}
+  \item{lht1}{Lambda parameter for stature (in centimeters) by sex and agemos1}
+  \item{mht1}{Mu parameter for stature (in centimeters) by sex and agemos1}
+  \item{sht1}{Sigma parameter for stature  (in centimeters) by sex and agemos1}
+  \item{lht2}{Lambda parameter for stature (in centimeters) by sex and agemos2}
+  \item{mht2}{Mu parameter for stature (in centimeters) by sex and agemos2}
+  \item{sht2}{Sigma parameter for stature  (in centimeters) by sex and agemos2}
+  \item{lwt1}{Lambda parameter for weight (in kilograms) by sex and agemos1}
+  \item{mwt1}{Mu parameter for weight (in kilograms) by sex and agemos1}
+  \item{swt1}{Sigma parameter for weight (in kilograms) by sex and agemos1}
+  \item{lwt2}{Lambda parameter for weight (in kilograms) by sex and agemos2}
+  \item{mwt2}{Mu parameter for weight (in kilograms) by sex and agemos2}
+  \item{swt2}{Sigma parameter for weight (in kilograms) by sex and agemos2}
+  \item{lbmi1}{Lambda parameter for body mass index by sex and agemos1 (2 to 20 years)}
+  \item{mbmi1}{Mu parameter for body mass index by sex and agemos1 (2 to 20 years)}
+  \item{sbmi1}{Sigma parameter for body mass index by sex and agemos1 (2 to 20 years)}
+  \item{lbmi2}{Lambda parameter for body mass index by sex and agemos2 (2 to 20 years)}
+  \item{mbmi2}{Mu parameter for body mass index by sex and agemos2 (2 to 20 years)}
+  \item{sbmi2}{Sigma parameter for body mass index by sex and agemos2 (2 to 20 years)}
+  \item{lhc1}{Lambda parameter for head circumference (in centimeters) by sex and agemos1}
+  \item{mhc1}{Mu parameter for head circumference (in centimeters) by sex and agemos1}
+  \item{shc1}{Sigma parameter for head circumference (in centimeters) by sex and agemos1}
+  \item{lhc2}{Lambda parameter for head circumference (in centimeters) by sex and agemos2}
+  \item{mhc2}{Mu parameter for head circumference (in centimeters) by sex and agemos2}
+  \item{shc2}{Sigma parameter for head circumference (in centimeters) by sex and agemos2}
+  \item{lg1}{Recumbent length in centimenters starting at 45cm in units of 0.5 centimeters}
+  \item{lwlg1}{Lambda parameter for weight (in kilograms) by sex and length (lg1) in centimeters (0-36 months)}
+  \item{mwlg1}{Mu parameter for weight (in kilograms) by sex and length (lg1) in centimeters (0-36 months)}
+  \item{swlg1}{Sigma parameter for weight (in kilograms) by sex and length (lg1) in centimeters (0-36 months)}
+  \item{lg2}{Recumbent length in centimenters starting at 45.5cm in units of 0.5 centimeters}
+  \item{lwlg2}{Lambda parameter for weight (in kilograms) by sex and length (lg2) in centimeters (0-36 months)}
+  \item{mwlg2}{Mu parameter for weight (in kilograms) by sex and length (lg2) in centimeters (0-36 months)}
+  \item{swlg2}{Sigma parameter for weight (in kilograms) by sex and length (lg2) in centimeters (0-36 months)}
+  \item{htcat}{Recumbent length in centimenters starting at 45cm in units of 0.5 centimeters}
+  \item{ht1}{Stature in centimenters starting at 77cm in units of 0.5 centimeters}
+  \item{lwht1}{Lambda parameter for weight in kilograms by sex and stature (ht1) in centimeters}
+  \item{mwht1}{Mu parameter for weight in kilograms by sex and stature (ht1) in centimeters}
+  \item{swht1}{Sigma parameter for weight in kilograms by sex and stature (ht1) in centimeters}
+  \item{ht2}{Stature in centimenters starting at 77.5cm in units of 0.5 centimeters}
+  \item{lwht2}{Lambda parameter for weight in kilograms by sex and stature (ht2) in centimeters}
+  \item{mwht2}{Mu parameter for weight in kilograms by sex and stature (ht2) in centimeters}
+  \item{swht2}{Sigma parameter for weight in kilograms by sex and stature (ht2) in centimeters}
 }}
+\source{
+\url{https://www.cdc.gov/nccdphp/dnpao/growthcharts/resources/sas.htm}
+}
 \usage{
 cdc_ref
 }
 \description{
+Lambda, mu, and sigma parameters for the creation of the 200 CDC growth charts. Sources for this data can be found in Tables 17-24 pages 151-178 of the 2000 CDC growth charts for the United States: Methods and development.
+}
+\details{
 Reference data for CDC data.
+}
+\references{
+Kuczmarski RJ, Ogden CL, Guo SS, et al. 2000 CDC growth charts for the United States: Methods and development. National Center for Health Statistics. Vital Health Stat 11(246). 2002
 }
 \keyword{datasets}
