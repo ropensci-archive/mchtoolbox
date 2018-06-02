@@ -15,7 +15,7 @@
 
 
 launch_mchtoolbox <- function() {
-
+  message ("Loading mchtoolbox shiny interface for local use.")
   shiny::runApp(appDir = system.file("shiny", package="mchtoolbox"))
 
 }
