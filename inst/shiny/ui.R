@@ -75,48 +75,52 @@ shinyUI(
 
       ),
       br(),
-      fluidRow(
-        column(width = 4,
-               # In a plotOutput, passing values for click, dblclick, hover, or brush
-               # will enable those interactions.
-               plotOutput("plot1", height = 550, width = 550,
-                          # Equivalent to: click = clickOpts(id = "plot_click")
-                          click = "plot_click",
-                          dblclick = dblclickOpts(
-                            id = "plot_dblclick"
-                          ),
-                          hover = hoverOpts(
-                            id = "plot_hover"
-                          ),
-                          brush = brushOpts(
-                            id = "plot_brush"
-                          )
-               )
+      fluidRow(column(
+        width = 4,
+        # In a plotOutput, passing values for click, dblclick, hover, or brush
+        # will enable those interactions.
+        plotOutput(
+          "plot1",
+          height = 550,
+          width = 550,
+          # Equivalent to: click = clickOpts(id = "plot_click")
+          click = "plot_click",
+          dblclick = dblclickOpts(id = "plot_dblclick"),
+          hover = hoverOpts(id = "plot_hover"),
+          brush = brushOpts(id = "plot_brush")
         )
-      ),
-      fluidRow(
-        column(width = 9,
-               verbatimTextOutput("click_info_new")
-               #textOutput("selected_var")
-        )
-      ),
+      )),
+      fluidRow(column(
+        width = 9,
+        verbatimTextOutput("click_info_new")
+        #textOutput("selected_var")
+      )),
       #DTOutput('results_out')
       tableOutput("contents"),
 
       br()
     ),
-    navbarMenu("Settings", icon = icon("cog", lib = "font-awesome"),
-               tabPanel("Graphics", icon = icon("tasks", lib = "font-awesome"),
-                        radioButtons("plot_theme", strong("Plot Theme"),
-                                     c("Gray" = "gray",
-                                       "Black and White" = "bw",
-                                       "Light" = "light"
-                                     ), selected = "gray"),
-                        br()
-               )),
+    navbarMenu(
+      "Settings",
+      icon = icon("cog", lib = "font-awesome"),
+      tabPanel(
+        "Graphics",
+        icon = icon("tasks", lib = "font-awesome"),
+        radioButtons(
+          "plot_theme",
+          strong("Plot Theme"),
+          c(
+            "Gray" = "gray",
+            "Black and White" = "bw",
+            "Light" = "light"
+          ),
+          selected = "gray"
+        ),
+        br()
+      )
+    ),
 
     navbarMenu(
-
       "About mchtools",
       icon = icon("dot-circle-o", lib = "font-awesome"),
       tabPanel(
@@ -182,11 +186,9 @@ shinyUI(
           '<div style="clear: left;"><img src="http://kylehamilton.com/files/maelle-salmon.jpg" alt="" style="float: left; margin-right:5px" /></div>'
         ),
         p(
-          a(
-            "Maëlle Salmon - rOpenSci",
+          a("Maëlle Salmon - rOpenSci",
             href = "http://www.masalmon.eu/",
-            target = "_blank"
-          )
+            target = "_blank")
         ),
         #p("Jennifer Thompson has authored things"),
         br(),
