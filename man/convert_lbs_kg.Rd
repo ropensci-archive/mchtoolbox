@@ -6,11 +6,14 @@
 \usage{
 convert_lbs_kg(lbs)
 }
+\arguments{
+\item{lbs}{weight in pounds}
+}
 \value{
 Converted value in kilograms
 }
 \description{
-Converts between pounds into  kilograms
+Converts between pounds into kilograms
 }
 \examples{
 convert_lbs_kg(7.123)

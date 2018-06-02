@@ -1,8 +1,9 @@
 #' Kilogram to pound conversion
 #'
-#' Converts between pounds into kilograms
+#' Converts between kilograms into pounds
 #'
-#' @return Converted value in kilograms
+#' @return Converted value in pounds
+#' @param kg weight in kilograms
 #' @references NIST Guide to the SI, Appendix B.9: Factors for units listed by kind of quantity or field of science https://www.nist.gov/pml/nist-guide-si-appendix-b9-factors-units-listed-kind-quantity-or-field-science
 #' @export
 #' @examples
@@ -18,9 +19,10 @@ convert_kg_lbs <- function(kg) {
 
 #' Pound to kilogram conversion
 #'
-#' Converts between pounds into  kilograms
+#' Converts between pounds into kilograms
 #'
 #' @return Converted value in kilograms
+#' @param lbs weight in pounds
 #' @references NIST Guide to the SI, Appendix B.9: Factors for units listed by kind of quantity or field of science https://www.nist.gov/pml/nist-guide-si-appendix-b9-factors-units-listed-kind-quantity-or-field-science
 #' @export
 #' @examples
