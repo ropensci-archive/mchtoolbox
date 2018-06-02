@@ -1,1 +1,0 @@
-package_coverage(line_exclusions = "R/launch_mchtoolbox.R" = c(1:2, 18)))
