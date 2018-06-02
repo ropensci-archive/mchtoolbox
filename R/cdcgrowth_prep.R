@@ -8,6 +8,9 @@
 # `agemons`, `weight`, and `height`.
 #
 #' @importFrom rlang .data
+#'
+# This removes the errors from the package check would throw for these two global enviroment calls -WKH
+utils::globalVariables(c("denom", "pnorm"))
 
 ## Helper function
 calc_l0 <- function(l1, l2, df){

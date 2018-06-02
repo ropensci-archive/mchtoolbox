@@ -17,7 +17,9 @@
 #' create_cdc_growth(nhanes_data)
 create_cdc_growth <- function(df) {
   # prepare data
-  prepped_data <- mchtoolbox:::cdcgrowth_prep(df)
+  #prepped_data <- mchtoolbox:::cdcgrowth_prep(df)
+  # Above is the old code, I removed the mchtoolbox::: because it was causing a note to flag on package check.
+  prepped_data <- cdcgrowth_prep(df)
 
   # output old data frame with new columns
   compute_cdc_growth(prepped_data)
