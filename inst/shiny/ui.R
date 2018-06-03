@@ -110,11 +110,41 @@ shinyUI(
           "plot_theme",
           strong("Plot Theme"),
           c(
-            "Gray" = "gray",
-            "Black and White" = "bw",
-            "Light" = "light"
+            "Gray" = "theme_gray",
+            "Black and White" = "theme_bw",
+            "Light" = "theme_light"
           ),
-          selected = "gray"
+          selected = "theme_gray"
+        ),
+        br(),
+        radioButtons(
+          "colorTheme",
+          strong("Color Theme"),
+          c(
+            "Inferno" = "B",
+            "Plasma" = "C",
+            "Viridis" = "D",
+            "Cividis" = "E"
+          ),
+          selected = "D"
+        ),
+        sliderInput(
+          'alphaLevel',
+          'Transparency Level',
+          min = 0,
+          max = 1,
+          value = 0.7,
+          step = 0.1,
+          round = 0
+        ),
+        sliderInput(
+          'pointSize',
+          'Point Size',
+          min = 0,
+          max = 10,
+          value = 3,
+          step = 0.5,
+          round = 0
         ),
         br()
       )
