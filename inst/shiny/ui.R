@@ -4,6 +4,7 @@ library("ggplot2")
 library("mchtoolbox")
 library("dplyr")
 library("viridisLite")
+library("DT")
 
 shinyUI(
   navbarPage(
@@ -100,8 +101,8 @@ shinyUI(
                #textOutput("selected_var")
         )
       ),
-      #DTOutput('results_out')
-      tableOutput("contents"),
+      DTOutput('contents'),
+      #tableOutput("contents"),
 
       br()
     ),

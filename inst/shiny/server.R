@@ -4,10 +4,11 @@ library("ggplot2")
 library("mchtoolbox")
 library("dplyr")
 library("viridisLite")
+library("DT")
 
 shinyServer(function(input, output, session) {
 
-  output$contents <- renderTable({
+  output$contents <- renderDT({
     # input$file1 will be NULL initially. After the user selects
     # and uploads a file, head of that data file by default,
     # or all rows if selected, will be shown.
