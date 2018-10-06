@@ -60,20 +60,7 @@ shinyUI(
             "Single Quote" = "'"
           ),
           selected = '"'
-        ),
-
-        # Horizontal line ----
-        tags$hr(),
-
-        # Input: Select number of rows to display ----
-        radioButtons(
-          "disp",
-          "Display",
-          choices = c(Head = "head",
-                      All = "all"),
-          selected = "head"
         )
-
       ),
       br(),
       fluidRow(

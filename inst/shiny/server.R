@@ -31,13 +31,7 @@ shinyServer(function(input, output, session) {
       stop(safeError(e))
     })
 
-    if (input$disp == "head") {
-      return(head(df))
-    }
-    else {
-      return(df)
-    }
-
+    return(df)
   })
 
 
