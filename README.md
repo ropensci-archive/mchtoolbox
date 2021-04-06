@@ -2,7 +2,7 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 mchtoolbox: Maternal Child Health Toolbox <img src="man/figures/imgHexSmall.png" align="right" />
 =================================================================================================
-
+[![Project Status: Abandoned – Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.](https://www.repostatus.org/badges/latest/abandoned.svg)](https://www.repostatus.org/#abandoned)
 [![Travis build status](https://travis-ci.com/ropenscilabs/mchtoolbox.svg?branch=master)](https://travis-ci.com/ropenscilabs/mchtoolbox) [![codecov](https://codecov.io/gh/ropenscilabs/mchtoolbox/branch/master/graph/badge.svg)](https://codecov.io/gh/ropenscilabs/mchtoolbox)
 
 Use `mchtoolbox` to calculate percentiles and z-scores for a child’s sex and age for BMI, weight, height, and head circumference based on CDC growth charts.
